@@ -1,2 +1,7 @@
 .coverage
 Pipfile.lock
+htmlcov
+.venv
+*pytest*
+__init__.py
+__pycache__
