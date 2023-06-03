@@ -1,5 +1,6 @@
 from fastapi import BaseModel
 
+
 class FileDTO(BaseModel):
-  name: str
-  content: str
+    name: str
+    content: str
