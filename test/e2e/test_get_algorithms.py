@@ -13,5 +13,5 @@ class GetAlgorithmTests(unittest.TestCase):
         response = self.app.get("/get_algorithms")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), ["drivers"])
+        self.assertEqual(response.json(), ["drivers", "zones"])
 

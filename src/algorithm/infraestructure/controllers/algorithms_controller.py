@@ -1,5 +1,7 @@
 from fastapi import APIRouter, status
 
+from algorithm.domain.services.algoritm_services import AlgorithmServices
+
 
 class AlgorithmController:
     def __init__(self):
@@ -8,5 +10,6 @@ class AlgorithmController:
             self.get_algorithms
         )
 
-    def get_algorithms(self):
-        return ["drivers"]
+    async def get_algorithms(self):
+        algorithm_service = AlgorithmServices(None)
+        return algorithm_service.get_algorithms()

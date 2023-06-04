@@ -5,4 +5,4 @@ htmlcov
 *pytest*
 __init__.py
 __pycache__
-.hypo*
+.hypothesis
