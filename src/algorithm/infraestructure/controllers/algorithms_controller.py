@@ -13,3 +13,5 @@ class AlgorithmController:
     async def get_algorithms(self):
         algorithm_service = AlgorithmServices(None)
         return algorithm_service.get_algorithms()
+    
+    
