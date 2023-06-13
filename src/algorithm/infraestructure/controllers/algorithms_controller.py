@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 
-from algorithm.domain.services.algoritm_services import AlgorithmServices
+from algorithm.domain.services.algorithm_services import AlgorithmServices
 
 
 class AlgorithmController:
