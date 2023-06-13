@@ -1,6 +1,6 @@
 from fastapi import BaseModel
 
-from .files_dto import FileDTO
+from algorithm.infraestructure.dtos.files_dto import FileDTO
 
 
 class AlgorithmDTO(BaseModel):

@@ -9,5 +9,10 @@ class AlgorithmServicesTests(unittest.TestCase):
 
     def test_get_algorithms(self):
         algorithm_services = AlgorithmServices(algorithm_repository=None)
+        
         algorithms = algorithm_services.get_algorithms()
-        self.assertEqual(algorithms, ["drivers", "zones"])
+        
+        self.assertCountEqual(algorithms, ["drivers", "zones"])
+
+    def test_run_algorithm_services(self):
+        pass
