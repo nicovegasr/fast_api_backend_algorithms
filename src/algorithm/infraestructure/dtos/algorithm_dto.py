@@ -1,4 +1,4 @@
-from fastapi import BaseModel
+from pydantic import BaseModel
 
 from algorithm.infraestructure.dtos.files_dto import FileDTO
 

@@ -44,4 +44,4 @@ Pipfile.lock: Pipfile
 
 .PHONY: run-server
 run-server:  ## Run server locally
-	@PYTHONPATH=src PIPENV_VERBOSITY=-1 pipenv run python -m src.infrastructure.api.server
+	@PYTHONPATH=src PIPENV_VERBOSITY=-1 pipenv run python -m src.api

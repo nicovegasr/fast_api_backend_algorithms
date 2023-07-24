@@ -17,7 +17,6 @@ class AlgorithmControllerGetTests(unittest.TestCase):
         self.assertCountEqual(response.json(), ["drivers", "zones"])
 
     def test_get_algorithms_empty(self):
-        # Quiero mockear el repositorio para que cuando se llame al metodo avialable_algorithms devuelva una lista vacia
         with patch('algorithm.infraestructure.repositories.local_repository.AlgorithmLocalRepository.get_available_algorithms', return_value=[]):
             response = self.app.get("/api/v1/algorithms")
         
