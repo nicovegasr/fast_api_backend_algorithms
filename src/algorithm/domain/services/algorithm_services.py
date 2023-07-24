@@ -8,6 +8,4 @@ class AlgorithmServices:
     
     # Funcion que devuelve los algoritmos disponibles en la carpeta models
     def get_algorithms(self):
-      models_path =  os.path.dirname(os.path.realpath(__file__)).rsplit("services", 1)[0] + "/models/"
-      algorithms =  [name for name in os.listdir(models_path) if os.path.isdir(os.path.join(models_path, name))]
-      return algorithms
+      return self.algorithm_repository.get_available_algorithms()

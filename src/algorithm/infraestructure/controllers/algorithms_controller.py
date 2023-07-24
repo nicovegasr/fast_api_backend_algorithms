@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 
 from algorithm.domain.services.algorithm_services import AlgorithmServices
-
+from algorithm.infraestructure.repositories.local_repository import AlgorithmLocalRepository
 
 class AlgorithmController:
     def __init__(self):
@@ -14,10 +14,13 @@ class AlgorithmController:
     # TODO: Si quiero añadir una base de datos tengo que hacer las comprobaciones de que los algoritmos existan en la base de datos.
     # Hacer tipados propios de errores es hacer sobre ingeniería ya que FastAPI no facilita esta funcionalidad.
     async def get_algorithms(self):
-        algorithm_service = AlgorithmServices(None)
+        algorithm_repository = AlgorithmLocalRepository()
+        algorithm_service = AlgorithmServices(algorithm_repository)
         algorithms = algorithm_service.get_algorithms()
         if not algorithms:
             raise HTTPException(status_code=404, detail="Algorithms not found in server, check the folder models")
         return algorithms
     
+    async def run_algorithm(self):
+        raise NotImplementedError
     
