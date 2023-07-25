@@ -12,6 +12,11 @@ class AlgorithmLocalRepository(AlgorithmRepository):
       algorithms =  [name for name in os.listdir(models_path) if os.path.isdir(os.path.join(models_path, name))]
       return algorithms
 
+    def algorithm_exists(self, algorithm_name: str) -> bool:
+        if algorithm_name in self.get_available_algorithms():
+            return True
+        return False
+
     def save_last_result(self, algorithm_result: list[pd.DataFrame]) -> None:
         pass
 

@@ -10,6 +10,7 @@ fastapi = "*"
 httpx = "*"
 openpyxl = "*"
 requests = "*"
+uvicorn = "*"
 
 [dev-packages]
 assertpy = "1.1"
