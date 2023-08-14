@@ -42,9 +42,9 @@ class AlgorithmController:
             result = algorithm_service.run_algorithm(algorithm_dto)
             #algorithm_service.save_result(result)
         except FileNumberInvalid as e:
-            raise HTTPException(status_code=401, detail="The file number of the file is invalid: " + str(e))
+            raise HTTPException(status_code=401, detail=f"The file number of the file: {str(e)} is invalid")
         except FilesEmpty as e:
-            raise HTTPException(status_code=400, detail="Files of the algorithm are empty: " + str(e))
+            raise HTTPException(status_code=400, detail=str(e))
         except AlgorithmNotFound:
             raise HTTPException(status_code=404, detail="Algorithm not found in server, check the folder models")
         except Exception as e:
