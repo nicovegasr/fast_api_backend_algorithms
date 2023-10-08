@@ -37,18 +37,16 @@ class AlgorithmController:
         algorithm_repository = AlgorithmLocalRepository()
         algorithm_service = AlgorithmServices(algorithm_repository)
         try:
-            AlgorithmServices.validate(algorithm_dto)
-            algorithm_service.algorithm_exists(algorithm_dto.name)
+            algorithm_service.validate(algorithm_dto)
             result = algorithm_service.run_algorithm(algorithm_dto)
-            #algorithm_service.save_result(result)
-        except FileNumberInvalid as e:
-            raise HTTPException(status_code=401, detail=f"{str(e)}")
-        except FilesEmpty as e:
-            raise HTTPException(status_code=400, detail=str(e))
-        except AlgorithmNotFound:
-            raise HTTPException(status_code=404, detail="Algorithm not found in server, check the folder models")
-        except Exception as e:
-            raise HTTPException(status_code=500, detail="Error running the algorithm: " + str(e)) 
+        except FileNumberInvalid as message_error:
+            raise HTTPException(status_code=401, detail=f"{str(message_error)}")
+        except FilesEmpty as message_error:
+            raise HTTPException(status_code=400, detail=f"{str(message_error)}")
+        except AlgorithmNotFound as message_error:
+            raise HTTPException(status_code=404, detail=f"{str(message_error)}")
+        except Exception as message_error:
+            raise HTTPException(status_code=500, detail="Error running the algorithm: " + str(message_error)) 
         return {"message": "Algorithm runned successfully", result: result}
         
     

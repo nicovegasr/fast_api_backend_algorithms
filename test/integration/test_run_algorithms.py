@@ -22,7 +22,6 @@ class AlgorithmControllerRunTests(unittest.TestCase):
                 }
             ]
         })
-
         self.assertEqual(response.status_code, 404)
 
     def test_run_algorithm_without_files_should_return_bad_request(self):

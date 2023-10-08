@@ -22,7 +22,7 @@ class AlgorithmServicesGetTests(unittest.TestCase):
         algorithm_dto = MagicMock()
         algorithm_dto.files = []
         with self.assertRaises(Exception) as context:
-            AlgorithmServices.validate(algorithm_dto)
+            self.algorithm_services.validate(algorithm_dto)
         # Then
         self.assertIsInstance(context.exception, FilesEmpty)
         self.assertTrue("The files of the algorithm are empty" in str(context.exception))
@@ -34,7 +34,7 @@ class AlgorithmServicesGetTests(unittest.TestCase):
         algorithm_dto = MagicMock()
         algorithm_dto.files = [files]
         with self.assertRaises(Exception) as context:
-            AlgorithmServices.validate(algorithm_dto)
+            self.algorithm_services.validate(algorithm_dto)
         # Then
         self.assertIsInstance(context.exception, FileNumberInvalid)
         self.assertEqual("The file number of the file: test is invalid", str(context.exception))

@@ -20,21 +20,15 @@ class AlgorithmServices:
       return self.algorithm_repository.get_available_algorithms()
     
 
-    def algorithm_exists(self, algorithm_name):
-        if self.algorithm_repository.algorithm_exists(algorithm_name):
-            return True
-        raise AlgorithmNotFound("Algorithm not found in server, check the folder models")
     
     def run_algorithm(self, algorithm_dto) -> list[pd.DataFrame]:
         pass
     
-    def save_result(self, result):
-        pass
-
-    @classmethod 
     def validate(self, algorithm_dto):
         if len(algorithm_dto.files) == 0:
-            raise FilesEmpty("The files of the algorithm are empty")
+            raise FilesEmpty()
         for file in algorithm_dto.files:
             if file.file_number <= 0:
                 raise FileNumberInvalid(file.name)            
+        if not self.algorithm_repository.algorithm_exists(algorithm_dto.name):
+            raise AlgorithmNotFound()
