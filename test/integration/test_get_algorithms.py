@@ -11,7 +11,8 @@ class AlgorithmControllerGetTests(unittest.TestCase):
         self.app = TestClient(app)
 
     def test_get_algorithms(self):
-        response = self.app.get("/api/v1/algorithms")
+        with patch('algorithm.infraestructure.repositories.local_repository.AlgorithmLocalRepository.get_available_algorithms', return_value=["drivers", "zones"]):
+            response = self.app.get("/api/v1/algorithms")
 
         self.assertEqual(response.status_code, 200)
         self.assertCountEqual(response.json(), ["drivers", "zones"])

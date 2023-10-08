@@ -37,12 +37,12 @@ class AlgorithmController:
         algorithm_repository = AlgorithmLocalRepository()
         algorithm_service = AlgorithmServices(algorithm_repository)
         try:
-            algorithm_service.validate(algorithm_dto)
+            AlgorithmServices.validate(algorithm_dto)
             algorithm_service.algorithm_exists(algorithm_dto.name)
             result = algorithm_service.run_algorithm(algorithm_dto)
             #algorithm_service.save_result(result)
         except FileNumberInvalid as e:
-            raise HTTPException(status_code=401, detail=f"The file number of the file: {str(e)} is invalid")
+            raise HTTPException(status_code=401, detail=f"{str(e)}")
         except FilesEmpty as e:
             raise HTTPException(status_code=400, detail=str(e))
         except AlgorithmNotFound:

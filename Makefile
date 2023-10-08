@@ -13,8 +13,9 @@ setup: .venv/lib  ## Install virtualenv dependencies
 
 .PHONY: tests
 tests:  ## Locally run tests
-	@PYTHONPATH=src $(PIPENV_SAFE_RUN) pytest -v
-
+	@echo "🧪 Running tests"
+	@PYTHONPATH=src $(PIPENV_SAFE_RUN) pytest -s -q -r f
+	
 .PHONY: lint
 lint:   ## Lint the project files
 	@echo "🌑 Formatting with black"

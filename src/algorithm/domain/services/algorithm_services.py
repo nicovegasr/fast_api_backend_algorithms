@@ -14,18 +14,11 @@ class AlgorithmServices:
     """
         * Get all the algorithms available in the server.
         * 
-        * @return list[str] List of the names of the algorithms.
+        * @return list[str] List of algorithm's name.
     """   
     def get_algorithms(self):
       return self.algorithm_repository.get_available_algorithms()
     
-    def validate(self, algorithm_dto):
-        if len(algorithm_dto.files) == 0:
-            raise FilesEmpty("The files of the algorithm are empty")
-        for file in algorithm_dto.files:
-            if file.file_number <= 0:
-                raise FileNumberInvalid(str(file.name))            
-        
 
     def algorithm_exists(self, algorithm_name):
         if self.algorithm_repository.algorithm_exists(algorithm_name):
@@ -37,3 +30,11 @@ class AlgorithmServices:
     
     def save_result(self, result):
         pass
+
+    @classmethod 
+    def validate(self, algorithm_dto):
+        if len(algorithm_dto.files) == 0:
+            raise FilesEmpty("The files of the algorithm are empty")
+        for file in algorithm_dto.files:
+            if file.file_number <= 0:
+                raise FileNumberInvalid(file.name)            
