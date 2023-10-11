@@ -1,4 +1,4 @@
-# Final degree project: Algorithm executer backend server.
+# Algorithm executer backend server.
 
 In this version we are going to use fastapi in order to improve the backend performance, also, if in the future someone wants to make the extraction of the data from other place that is not a frontend, that person would have to modify the controller and add a method to the repository.
 
